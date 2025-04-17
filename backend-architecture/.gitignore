@@ -3,12 +3,13 @@
 # Gradle files
 .gradle/
 build/
+.DS_Store
+.idea/
 # Temporary files
 *.tmp
 *.temp
 
 # Operating System files
-.DS_Store
 Thumbs.db
 
 # Other files
