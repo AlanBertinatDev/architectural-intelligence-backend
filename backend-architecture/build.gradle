@@ -43,6 +43,9 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	// Dependencias de Swagger / documentacion para la api
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

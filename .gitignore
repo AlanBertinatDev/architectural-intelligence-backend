@@ -1,0 +1,14 @@
+.DS_Store
+.idea/.name
+.idea/architectural-intelligence-backend.iml
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/modules/backend-architecture.iml
+.idea/modules/backend-architecture.main.iml
+.idea/modules/com.architecture.backend-architecture.main.iml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+.idea/

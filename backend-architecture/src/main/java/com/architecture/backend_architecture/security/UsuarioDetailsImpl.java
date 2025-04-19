@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UsuarioDetailsImpl implements UserDetails {
 
@@ -19,7 +20,9 @@ public class UsuarioDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + usuario.getRoles()));
+        return usuario.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getNombre()))
+                .collect(Collectors.toList());
     }
 
     @Override public String getPassword() { return usuario.getPassword(); }

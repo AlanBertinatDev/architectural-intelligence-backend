@@ -21,6 +21,9 @@ public class JwtUtils {
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
+                .claim("roles", userDetails.getAuthorities().stream()
+                        .map(Object::toString)
+                        .toList())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -39,5 +42,9 @@ public class JwtUtils {
     public boolean validateToken(String token, UserDetails userDetails) {
         String username = extractUsername(token);
         return username.equals(userDetails.getUsername());
+    }
+
+    public Key getKey() {
+        return key;
     }
 }

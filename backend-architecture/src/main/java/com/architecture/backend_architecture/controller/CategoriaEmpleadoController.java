@@ -2,6 +2,8 @@ package com.architecture.backend_architecture.controller;
 
 import com.architecture.backend_architecture.model.CategoriaEmpleado;
 import com.architecture.backend_architecture.service.CategoriaEmpleadoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@SecurityRequirement(name = "Bearer")
+@Tag(name = "Categoria empleados", description = "Crud de categorías de emplados")
 @RequestMapping("/api/categorias-empleado")
 public class CategoriaEmpleadoController {
 
@@ -24,11 +28,13 @@ public class CategoriaEmpleadoController {
         return ResponseEntity.ok(service.crear(categoria));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ResponseEntity<List<CategoriaEmpleado>> listar() {
         return ResponseEntity.ok(service.listar());
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaEmpleado> obtener(@PathVariable Long id) {
         return ResponseEntity.ok(service.obtenerPorId(id));
